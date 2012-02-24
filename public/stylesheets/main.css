@@ -127,7 +127,7 @@ code, kbd, samp {font-family:monospace; font-size:110%;}
 
 /* -----------------...........--------------------------------------------------------------------------------------- */
 
-#main {width:1000px; margin: 0 auto; _text-align:left; padding-top:33px;color:#FF9000;}
+#main {width:1000px; margin: 0 auto; _text-align:left; padding-top:5px;color:#FF9000;}
 
 /* Header */
 #header { -moz-border-radius-top: 10px;  -webkit-border-top-radius: 10px; 
