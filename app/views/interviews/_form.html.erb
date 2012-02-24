@@ -1,0 +1,86 @@
+
+<div class="mainbox" id="mainbox" >
+  <%= form_for(@interview) do |f| %>
+    <% if @interview.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@interview.errors.count, "error") %> prohibited this interview from being saved:</h2>
+        <ul>
+          <% @interview.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div id="dialog">
+      <table id="form1">
+        <tr>
+        <div class="field">
+          <th>CV Recieved <%= f.label :ON %><br /></th><td>
+            <%= f.text_field :cv_recieved_on %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th>Recieved <%= f.label :From %><br /></th><td>
+            <%= f.text_field :recieved_from %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th>Resource <%= f.label :Name %><br /></th><td>
+            <%= f.text_field :resource_name %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th>For <%= f.label :Location %><br /></th><td>
+            <%= f.select(:for_location, Interview::For_Location) %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th><%= f.label :Skills %><br /></th><td>
+            <%= f.text_field :skills %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th>Total <%= f.label :Experience %><br /></th><td>
+            <%= f.text_field :total_experience %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th>Contact <%= f.label :Number %><br /></th><td>
+            <%= f.text_field :contact_number %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th><%= f.label :Source %><br /></th><td>
+            <%= f.text_field :source %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th><%= f.label :Status %><br /></th><td>
+            <%= f.select(:status, Interview::Status) %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th><%= f.label :Remarks %><br /></th><td>
+            <%= f.text_area :remarks %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th>Date Of <%= f.label :Interview %><br /></th><td>
+            <%= f.text_field :date_of_interview %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th>First <%= f.label :Round %><br /></th><td>
+            <%= f.select(:first_round, Interview::First_Round) %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th>Second <%= f.label :Round %><br /></th><td>
+            <%= f.select(:second_round, Interview::Second_Round) %></td><tr>
+        <div class="field">
+          <th>MR <%= f.label :Round %><br /></th><td>
+            <%= f.select(:mr_round, Interview::MR_Round) %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th>E-<%= f.label :Mail %><br /></th><td>
+            <%= f.text_field :email %></td>
+        </div></tr><tr>
+        <div class="field">
+          <th>Date Of <%= f.label :Joining %><br /></th><td>
+            <%= f.text_field :date_of_joining %></td>
+        </div></tr>
+      </table>
+      <div class="actions">
+        <center><tr><%= f.submit %></tr>
+      </div></tr>
+    <% end %>
+  </div>
+</div>

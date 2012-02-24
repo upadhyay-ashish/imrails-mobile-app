@@ -1,0 +1,51 @@
+
+<%=render :partial=>"search"%>
+<div class="column contactlist">
+  <div class="mainbox">
+    <div class="menu">
+      <% content_for :head do %>
+        
+        <li><%=link_to "Add New Candidates", new_interview_path%></li>
+      <% end %>
+    </div>
+    <div class="displaying" >
+      <%= page_entries_info @interviews %>
+      <div style="margin-left:700px; position:absolute; margin-bottom: 10px;">Export<%= link_to image_tag("Excel.png", :alt => "Export as Excel", :title => "Export as Excel",:remote=>true,:width => 20, :height => 25), request.parameters.merge({:format => :csv})%></div>
+    </div><br>
+    <%if @interviews.blank?%>
+      <h3>  No Results Found</h3>
+    <%end%>
+    <table id="ashish"class="standard_table" cellpadding="0" cellspacing="0" >
+      <tbody><tr class="list">
+
+          <th>Resource Name</th>
+          <th>Status</th>
+          <th>Recieved From</th>
+          <th>CV Recieved ON</th>
+          <th>Document List</th>
+          <th>Document Import</th>
+        </tr><% j=1 %>
+        <% @interviews.each_with_index do |interview,i| %>
+          <tr class="<%=cycle('', 'alt_row')%>">
+
+            <td>
+              <%= link_to "#{h interview.resource_name.upcase}",interview,:id=>"candidate_#{h interview.id}" ,:class => 'details' %></td>
+            <td><%=h interview.status %></td>
+            <td><%=h interview.recieved_from %></td>
+            <td><%=h interview.cv_recieved_on.strftime("%d/%m/%Y")  %>
+
+            <td><%interview.attachments.each_with_index do |attachment,i|%>
+                <%= link_to "#{attachment.data_file_name}", download_attachment_url(:id=>interview.id,:attachment_id=>attachment.id) %>
+                <%= "," if i+1 < interview.attachments.length%>
+              <%end%>
+            </td>
+            <td><%=  link_to image_tag("paperclip_icon.png", :alt => "Upload File", :title => "UPLOAD",:width => 20, :height => 20), "javascript:void(0);",:onclick=>"window.open('#{upload_personal_doc_url(:id=>interview.id)}','Import Document','Height=75px;width=150px;')" %>
+              <%=  link_to image_tag("Symbols Delete.png", :alt => "Delete", :title => "DELETE",:remote=>true,:width => 20, :height => 25), interview, :confirm => 'Are you sure?', :method => :delete %>
+            </td> </td>
+          </tr><% j=j+1 %>
+        <% end %>
+      </tbody>
+    </table>
+    <%=will_paginate @interviews%>
+    <div class="clear"></div>
+  </div></div>
