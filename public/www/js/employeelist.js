@@ -1,4 +1,4 @@
-var serviceURL = "int-rails.heroku.com/interviews.json";
+var serviceURL = "/interviews.json";
 
 var employees;
 

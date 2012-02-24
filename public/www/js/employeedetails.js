@@ -1,7 +1,7 @@
 $('#detailsPage').live('pageshow', function(event) {
 	var id = getUrlVars()["id"];
 	
-	$.getJSON('int-rails.heroku.com/interviews/'+id+".json", displayEmployee);
+	$.getJSON('/interviews/'+id+".json", displayEmployee);
 });
 
 function displayEmployee(data) {
