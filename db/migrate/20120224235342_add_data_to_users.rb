@@ -4,6 +4,6 @@ class AddDataToUsers < ActiveRecord::Migration
   end
 
   def self.down
-	delete from users;
+	execute'delete from users'
   end
 end
